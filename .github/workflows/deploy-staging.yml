@@ -4,6 +4,13 @@ on:
   pull_request:
     types: [labeled]
 
+env:
+  DOCKER_IMAGE_NAME: ketrujillo08/azure-ttt
+  IMAGE_REGISTRY_URL: https://hub.docker.com
+  AZURE_WEBAPP_NAME: ketrujillo08-ttt-app
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    if: contains(github.event.pull_request.labels.*.name, 'stage')
